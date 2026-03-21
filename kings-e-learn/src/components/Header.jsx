@@ -53,13 +53,6 @@ function Header() {
 
           {/* Right Section - Auth Buttons (Responsive) */}
           <div className="flex items-center justify-center sm:justify-end gap-2 sm:gap-3 shrink-0">
-            <button className='px-4 sm:px-5 py-1.5 sm:py-2 text-white font-medium hover:text-purple-300 transition-all duration-200 relative group text-sm sm:text-base cursor-pointer'>
-              Login
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-400 group-hover:w-full transition-all duration-300"></span>
-            </button>
-            <button className='px-3 sm:px-4 py-1 text-white font-medium rounded-full bg-linear-to-r from-purple-500 to-blue-500 hover:shadow-lg hover:shadow-purple-500/25 transform hover:scale-105 transition-all duration-200 text-sm cursor-pointer'>
-              Sign Up
-            </button>
             <div className="hidden sm:flex items-center gap-2 ml-4 cursor-pointer p-2 hover:bg-white/10 rounded-full transition-all duration-200">
               <img 
                 src="../public/pfp-1.jpeg" 
