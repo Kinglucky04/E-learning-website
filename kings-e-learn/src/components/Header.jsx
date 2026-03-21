@@ -8,7 +8,7 @@ function Header() {
       <div className='container mx-auto px-2 sm:px-4 py-2 sm:py-2'>
         <div className='flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-8'>
           <div className='flex items-center justify-between sm:justify-start'>
-            <div className='relative group cursor-pointer'>
+            <div className='relative group'>
               <h2 className='text-sm uppercase sm:text-2xl font-bold tracking-wider bg-linear-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent'>
                 Kings E-Learn
               </h2>
@@ -46,9 +46,6 @@ function Header() {
         
         {/* Explore Button */}
         <button className='hidden sm:inline-flex items-center justify-center gap-1.5 px-3 py-1.5 sm:py-1 text-white hover:text-purple-300 transition-colors duration-200 font-medium text-xs sm:text-sm bg-purple-500/20 sm:bg-transparent rounded-md sm:rounded-full'>
-          <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
           Explore
         </button>
     </div>
@@ -60,7 +57,7 @@ function Header() {
               Login
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-400 group-hover:w-full transition-all duration-300"></span>
             </button>
-            <button className='px-1 sm:px-4 py-1 sm:py-2 bg-linear-to-r from-purple-500 to-blue-500 text-white font-medium rounded-full hover:shadow-lg hover:shadow-purple-500/25 transform hover:scale-105 transition-all duration-200 text-sm sm:text-base cursor-pointer'>
+            <button className='px-3 sm:px-4 py-1 text-white font-medium rounded-full bg-linear-to-r from-purple-500 to-blue-500 hover:shadow-lg hover:shadow-purple-500/25 transform hover:scale-105 transition-all duration-200 text-sm cursor-pointer'>
               Sign Up
             </button>
             <div className="hidden sm:flex items-center gap-2 ml-4 cursor-pointer p-2 hover:bg-white/10 rounded-full transition-all duration-200">
