@@ -5,24 +5,21 @@ import { HiOutlineMail } from 'react-icons/hi';
 function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-8 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900">
-      {/* Login Card */}
       <div className="w-full max-w-md">
-        {/* Main Card */}
         <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8">
           
           {/* Header Section */}
           <div className="text-center mb-8">
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2 uppercase">
               Welcome Back
             </h1>
             <p className="text-gray-500 text-sm">
-              Sign in to continue your journey
+              Sign in to continue your learning journey
             </p>
           </div>
 
           {/* Login Form */}
           <form className="space-y-5">
-            {/* Email/Username Field */}
             <div>
               <label className="block text-gray-700 text-sm font-medium mb-2">
                 Email or Username
@@ -37,7 +34,7 @@ function Login() {
               </div>
             </div>
 
-            {/* Password Field */}
+
             <div>
               <label className="block text-gray-700 text-sm font-medium mb-2">
                 Password
@@ -52,7 +49,6 @@ function Login() {
               </div>
             </div>
 
-            {/* Remember Me & Forgot Password */}
             <div className="flex items-center justify-between text-sm flex-wrap gap-2">
               <label className="flex items-center gap-2 cursor-pointer">
                 <input 
@@ -69,13 +65,12 @@ function Login() {
             {/* Login Button */}
             <button 
               type="submit" 
-              className="w-full py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transform hover:scale-[1.02] transition-all duration-200 shadow-md hover:shadow-lg"
+              className="w-full py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transform hover:scale-[1.02] transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer"
             >
               Sign In
             </button>
           </form>
 
-          {/* Divider */}
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-gray-200"></div>
@@ -86,18 +81,9 @@ function Login() {
           </div>
 
           {/* Social Login Buttons */}
-          <div className="grid grid-cols-3 gap-3 mb-6">
-            <button className="flex items-center justify-center gap-2 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+          <div className="mb-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button className="flex items-center justify-center gap-2 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors p-4 w-18 h-12 cursor-pointer">
               <FaGoogle className="text-red-500 text-lg" />
-              <span className="text-sm text-gray-600 hidden sm:inline">Google</span>
-            </button>
-            <button className="flex items-center justify-center gap-2 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-              <FaFacebook className="text-blue-600 text-lg" />
-              <span className="text-sm text-gray-600 hidden sm:inline">Facebook</span>
-            </button>
-            <button className="flex items-center justify-center gap-2 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-              <FaApple className="text-gray-700 text-lg" />
-              <span className="text-sm text-gray-600 hidden sm:inline">Apple</span>
             </button>
           </div>
 
