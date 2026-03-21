@@ -1,8 +1,46 @@
 import React from 'react'
+import { useState, useEffect, useRef} from 'react'
 import './header.css'
+import MobileMenu from './MobileMenu'
+import Profile from './Profile'
+
 
 
 function Header() {
+
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isProfileOpen, setIsProfileOpen] = useState(false)
+  const profileRef = useRef(null)
+  useEffect(() => {
+  const handleClickOutside = (event) => {
+    if (profileRef.current && !profileRef.current.contains(event.target)) {
+      setIsProfileOpen(false)
+    }
+  }
+  
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
+
+  const toggleMenu = () => {
+      setIsMenuOpen(!isMenuOpen)
+    }
+
+    const closeMenu = () => {
+      setIsMenuOpen(false)
+    }
+
+    const toggleProfile = () => {
+      setIsProfileOpen(!isProfileOpen)
+    }
+
+    const closeProfile = () => {
+      setIsProfileOpen(false)
+    }
+
   return (
     <div className='header-bg'>
       <div className='container mx-auto px-2 sm:px-4 py-2 sm:py-2'>
@@ -18,7 +56,7 @@ function Header() {
             </div>
             
             {/* Mobile Menu Toggle - Optional */}
-            <button className='sm:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors'>
+            <button   onClick={toggleMenu} className='sm:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors'>
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
@@ -45,7 +83,7 @@ function Header() {
         <div className='hidden sm:block h-5 w-px bg-white/20'></div>
         
         {/* Explore Button */}
-        <button className='hidden sm:inline-flex items-center justify-center gap-1.5 px-3 py-1.5 sm:py-1 text-white hover:text-purple-300 transition-colors duration-200 font-medium text-xs sm:text-sm bg-purple-500/20 sm:bg-transparent rounded-md sm:rounded-full'>
+        <button   onClick={toggleMenu} className='hidden sm:inline-flex items-center justify-center gap-1.5 px-3 py-1.5 sm:py-1 text-white hover:text-purple-300 transition-colors duration-200 font-medium text-xs sm:text-sm bg-purple-500/20 sm:bg-transparent rounded-md sm:rounded-full'>
           Explore
         </button>
     </div>
@@ -53,7 +91,7 @@ function Header() {
 
           {/* Right Section - Auth Buttons (Responsive) */}
           <div className="flex items-center justify-center sm:justify-end gap-2 sm:gap-3 shrink-0">
-            <div className="hidden sm:flex items-center gap-2 ml-4 cursor-pointer p-2 hover:bg-white/10 rounded-full transition-all duration-200">
+            <div ref={profileRef} className="hidden sm:flex items-center gap-2 ml-4 cursor-pointer p-2 hover:bg-white/10 rounded-full transition-all duration-200" onClick={toggleProfile}>
               <img 
                 src="../public/pfp-1.jpeg" 
                 alt="Profile" 
@@ -64,6 +102,8 @@ function Header() {
           </div>
         </div>
       </div>
+      <MobileMenu isOpen={isMenuOpen} onClose={closeMenu} />
+      <Profile isOpen={isProfileOpen} onClose={closeProfile} />
     </div>
   )
 }
