@@ -82,7 +82,7 @@ function Homepage() {
                 </div>
                 
                 {/* Floating Badge */}
-                <div className="absolute -bottom-4 -right-4 bg-white rounded-lg shadow-lg p-3 animate-bounce">
+                <div className="absolute -bottom-4 -right-4 bg-white rounded-lg shadow-lg p-3">
                   <div className="flex items-center gap-2">
                     <span className="text-sm font-semibold text-gray-800">Learn at your pace</span>
                   </div>

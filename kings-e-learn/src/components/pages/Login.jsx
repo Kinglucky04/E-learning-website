@@ -2,33 +2,29 @@ import React from 'react';
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
-import { FaUser, FaLock, FaFacebook, FaGoogle, FaApple } from 'react-icons/fa';
-import { HiOutlineMail } from 'react-icons/hi';
+import { FaUser, FaLock, FaGoogle, FaApple } from 'react-icons/fa';
 
 function Login() {
 
   const navigate = useNavigate();
   const { login } = useAuth();
   
-  // Add state for the inputs
-  const [identifier, setIdentifier] = useState(''); // Can be email or username
+  const [identifier, setIdentifier] = useState(''); 
   const [password, setPassword] = useState('');
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if(!identifier || !password) return; // Basic validation
+    if(!identifier || !password) return; 
     
-    // We pass the identifier as the username so it shows up in the Header!
     login(identifier, identifier); 
     navigate('/home'); 
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-8 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900">
+    <div className="min-h-screen flex items-center justify-center px-4 py-8 bg-blue-900">
       <div className="w-full max-w-md">
         <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8">
-          
-          {/* Header Section */}
+
           <div className="text-center mb-8">
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2 uppercase">
               Welcome Back
@@ -38,7 +34,6 @@ function Login() {
             </p>
           </div>
 
-          {/* Login Form */}
           <form className="space-y-5 " onSubmit={handleLogin}>
             <div>
               <label className="block text-gray-700 text-sm font-medium mb-2">
@@ -77,19 +72,18 @@ function Login() {
               <label className="flex items-center gap-2 cursor-pointer">
                 <input 
                   type="checkbox" 
-                  className="w-4 h-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
+                  className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                 />
                 <span className="text-gray-600">Remember me</span>
               </label>
-              <a href="#" className="text-purple-600 hover:text-purple-700 transition-colors">
+              <a href="#" className="text-blue-600 hover:text-blue-700 transition-colors">
                 Forgot password?
               </a>
             </div>
 
-            {/* Login Button */}
             <button 
               type="submit" 
-              className="w-full py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transform hover:scale-[1.02] transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer"
+              className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transform hover:scale-[1.02] transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer"
             >
               Sign In
             </button>
@@ -104,18 +98,16 @@ function Login() {
             </div>
           </div>
 
-          {/* Social Login Buttons */}
           <div className="mb-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <button className="flex items-center justify-center gap-2 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors p-4 w-18 h-12 cursor-pointer">
               <FaGoogle className="text-red-500 text-lg" />
             </button>
           </div>
 
-          {/* Sign Up Link */}
          <div className="text-center">
             <p className="text-gray-600 text-sm">
               Don't have an account?{' '}
-              <Link to="/signup" className="text-purple-600 hover:text-purple-700 font-medium transition-colors">
+              <Link to="/signup" className="text-blue-600 hover:text-blue-700 font-medium transition-colors">
                 Sign up now
               </Link>
             </p>

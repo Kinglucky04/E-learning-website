@@ -1,9 +1,9 @@
-import React, { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // null means not logged in
+  const [user, setUser] = useState(null); 
 
   const login = (email, username) => {
     setUser({ email, name: username }); 

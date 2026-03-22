@@ -89,7 +89,7 @@ export const WebRoadmap = () => {
         
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-block px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm font-semibold mb-4">
+          <div className="inline-block px-4 py-2 bg-blue-500 text-white rounded-full text-sm font-semibold mb-4">
             🗺️ Your Learning Journey
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -106,7 +106,7 @@ export const WebRoadmap = () => {
             onClick={() => setActiveTab('web2')}
             className={`px-8 py-3 rounded-lg font-semibold transition-all duration-300 ${
               activeTab === 'web2'
-                ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg scale-105'
+                ? 'bg-blue-500 text-white shadow-lg scale-105'
                 : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
             }`}
           >
@@ -116,7 +116,7 @@ export const WebRoadmap = () => {
             onClick={() => setActiveTab('web3')}
             className={`px-8 py-3 rounded-lg font-semibold transition-all duration-300 ${
               activeTab === 'web3'
-                ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg scale-105'
+                ? 'bg-blue-500  text-white shadow-lg scale-105'
                 : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
             }`}
           >
@@ -127,14 +127,14 @@ export const WebRoadmap = () => {
         {/* Roadmap Timeline */}
         <div className="relative">
           {/* Vertical Line */}
-          <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500"></div>
+          <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-blue-500 "></div>
           
           {currentRoadmap.map((phase, index) => (
             <div key={index} className={`relative flex flex-col md:flex-row items-center mb-16 ${
               index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
             }`}>
               {/* Timeline Dot */}
-              <div className="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full border-4 border-gray-900 z-10"></div>
+              <div className="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-blue-500 rounded-full border-4 border-gray-900 z-10"></div>
               
               {/* Content */}
               <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'} pl-16 md:pl-0`}>
