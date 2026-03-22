@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect, useRef} from 'react'
+import { useAuth } from './hooks/useAuth';
 import './header.css'
 import MobileMenu from './MobileMenu'
 import Profile from './Profile'
@@ -7,6 +8,8 @@ import Profile from './Profile'
 
 
 function Header() {
+  
+  const { user } = useAuth();
 
   {/* react hooks */}
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -97,7 +100,7 @@ function Header() {
                 alt="Profile" 
                 className="w-8 h-8 rounded-full border-2 border-white/20"
               />
-              <span className="text-white text-sm font-medium">Lucky Pam</span>
+              <span className="text-white text-sm font-medium">{user?.name || "Student"}</span>
             </div>
           </div>
         </div>

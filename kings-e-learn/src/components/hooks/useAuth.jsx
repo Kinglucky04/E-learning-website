@@ -5,8 +5,8 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null); // null means not logged in
 
-  const login = (email, password) => {
-    setUser({ email, name: 'Lucky Pam' }); 
+  const login = (email, username) => {
+    setUser({ email, name: username }); 
   };
 
   // Logout function

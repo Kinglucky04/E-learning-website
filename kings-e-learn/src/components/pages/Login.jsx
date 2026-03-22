@@ -9,12 +9,20 @@ function Login() {
 
   const navigate = useNavigate();
   const { login } = useAuth();
+  
+  // Add state for the inputs
+  const [identifier, setIdentifier] = useState(''); // Can be email or username
+  const [password, setPassword] = useState('');
 
-    const handleLogin = (e) => {
-      e.preventDefault();
-      login('user@test.com', 'password123'); 
-      navigate('/home'); 
-    };
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if(!identifier || !password) return; // Basic validation
+    
+    // We pass the identifier as the username so it shows up in the Header!
+    login(identifier, identifier); 
+    navigate('/home'); 
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-8 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900">
       <div className="w-full max-w-md">
@@ -31,7 +39,7 @@ function Login() {
           </div>
 
           {/* Login Form */}
-          <form className="space-y-5">
+          <form className="space-y-5 " onSubmit={handleLogin}>
             <div>
               <label className="block text-gray-700 text-sm font-medium mb-2">
                 Email or Username
@@ -40,6 +48,8 @@ function Login() {
                 <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm" />
                 <input 
                   type="text" 
+                  value={identifier}
+                  onChange={(e) => setIdentifier(e.target.value)}
                   placeholder="Enter your email or username"
                   className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-200"
                 />
@@ -55,6 +65,8 @@ function Login() {
                 <FaLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm" />
                 <input 
                   type="password" 
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your password"
                   className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-200"
                 />
