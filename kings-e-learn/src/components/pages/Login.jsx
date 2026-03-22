@@ -1,8 +1,20 @@
 import React from 'react';
+import { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
 import { FaUser, FaLock, FaFacebook, FaGoogle, FaApple } from 'react-icons/fa';
 import { HiOutlineMail } from 'react-icons/hi';
 
 function Login() {
+
+  const navigate = useNavigate();
+  const { login } = useAuth();
+
+    const handleLogin = (e) => {
+      e.preventDefault();
+      login('user@test.com', 'password123'); 
+      navigate('/home'); 
+    };
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-8 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900">
       <div className="w-full max-w-md">
@@ -88,12 +100,12 @@ function Login() {
           </div>
 
           {/* Sign Up Link */}
-          <div className="text-center">
+         <div className="text-center">
             <p className="text-gray-600 text-sm">
               Don't have an account?{' '}
-              <a href="#" className="text-purple-600 hover:text-purple-700 font-medium transition-colors">
+              <Link to="/signup" className="text-purple-600 hover:text-purple-700 font-medium transition-colors">
                 Sign up now
-              </a>
+              </Link>
             </p>
           </div>
         </div>

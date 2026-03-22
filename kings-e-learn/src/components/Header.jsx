@@ -8,7 +8,7 @@ import Profile from './Profile'
 
 function Header() {
 
-
+  {/* react hooks */}
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isProfileOpen, setIsProfileOpen] = useState(false)
   const profileRef = useRef(null)
@@ -47,7 +47,7 @@ function Header() {
         <div className='flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-8'>
           <div className='flex items-center justify-between sm:justify-start'>
             <div className='relative group'>
-              <h2 className='text-sm uppercase sm:text-2xl font-bold tracking-wider bg-linear-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent'>
+              <h2 className='text-sm uppercase sm:text-2xl font-bold tracking-wider bg-blue-400 bg-clip-text text-transparent'>
                 Kings E-Learn
               </h2>
               <p className='absolute left-0 top-full text-xs text-gray-400 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 whitespace-nowrap sm:hidden md:block'>
@@ -69,7 +69,7 @@ function Header() {
         
         {/* Search Input */}
         <div className='flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 flex-1 bg-white/5 sm:bg-transparent rounded-md sm:rounded-full'>
-        <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
         <input 
@@ -83,7 +83,7 @@ function Header() {
         <div className='hidden sm:block h-5 w-px bg-white/20'></div>
         
         {/* Explore Button */}
-        <button   onClick={toggleMenu} className='hidden sm:inline-flex items-center justify-center gap-1.5 px-3 py-1.5 sm:py-1 text-white hover:text-purple-300 transition-colors duration-200 font-medium text-xs sm:text-sm bg-purple-500/20 sm:bg-transparent rounded-md sm:rounded-full'>
+        <button   onClick={toggleMenu} className='hidden sm:inline-flex items-center justify-center gap-1.5 px-3 py-1.5 sm:py-1 text-white hover:text-blue-400 transition-colors duration-200 font-medium text-xs sm:text-sm bg-purple-500/20 sm:bg-transparent rounded-md sm:rounded-full cursor-pointer'>
           Explore
         </button>
     </div>
@@ -93,7 +93,7 @@ function Header() {
           <div className="flex items-center justify-center sm:justify-end gap-2 sm:gap-3 shrink-0">
             <div ref={profileRef} className="hidden sm:flex items-center gap-2 ml-4 cursor-pointer p-2 hover:bg-white/10 rounded-full transition-all duration-200" onClick={toggleProfile}>
               <img 
-                src="../public/pfp-1.jpeg" 
+                src="/pfp-1.jpeg" 
                 alt="Profile" 
                 className="w-8 h-8 rounded-full border-2 border-white/20"
               />

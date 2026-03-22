@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
-import { FaFacebook, FaApple } from 'react-icons/fa';
 import { useState } from 'react';
 
 function Signup() {
@@ -151,9 +151,9 @@ function Signup() {
           <div className="text-center">
             <p className="text-gray-600 text-sm">
               Already have an account?{' '}
-              <a href="#" className="text-purple-600 hover:text-purple-700 font-medium transition-colors">
+              <Link to="/login" className="text-purple-600 hover:text-purple-700 font-medium transition-colors">
                 Sign in
-              </a>
+              </Link>
             </p>
           </div>
         </div>
