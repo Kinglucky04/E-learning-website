@@ -1,13 +1,14 @@
 import React from 'react'
 import { useState, useEffect, useRef} from 'react'
 import { useAuth } from './hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 import './header.css'
 import MobileMenu from './MobileMenu'
 import Profile from './Profile'
 
 
 
-function Header() {
+function Header({ searchQuery, setSearchQuery }) {
   
   const { user } = useAuth();
 
@@ -69,23 +70,6 @@ function Header() {
           {/* Center Section - Search & Explore (Responsive) */}
        <div className='w-full sm:w-auto sm:flex-1 sm:max-w-md md:max-w-lg'>
     <div className='relative flex flex-col sm:flex-row items-stretch sm:items-center gap-1.5 sm:gap-2 bg-white/5 backdrop-blur-sm rounded-lg sm:rounded-full p-1.5 sm:p-1 border border-white/10 hover:border-white/20 transition-all duration-300'>
-        
-        {/* Search Input */}
-        <div className='flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 flex-1 bg-white/5 sm:bg-transparent rounded-md sm:rounded-full'>
-        <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
-        <input 
-            type="text" 
-            placeholder="Search..." 
-            className='bg-transparent text-white placeholder-gray-400 focus:outline-none py-1.5 sm:py-1.5 w-full text-xs sm:text-sm'
-        />
-        </div>
-        
-        {/* Divider - Hidden on mobile */}
-        <div className='hidden sm:block h-5 w-px bg-white/20'></div>
-        
-        {/* Explore Button */}
         <button   onClick={toggleMenu} className='hidden sm:inline-flex items-center justify-center gap-1.5 px-3 py-1.5 sm:py-1 text-white hover:text-blue-400 transition-colors duration-200 font-medium text-xs sm:text-sm bg-purple-500/20 sm:bg-transparent rounded-md sm:rounded-full cursor-pointer'>
           Explore
         </button>

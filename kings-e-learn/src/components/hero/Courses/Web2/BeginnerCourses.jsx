@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {addCourseToStorage} from "../../../utils/CourseStorage"
 
 const beginnerCourses = [
   {
@@ -51,11 +52,11 @@ const beginnerCourses = [
   }
 ]
 
-const BeginnerCourses = () => {
+const BeginnerCourses = ({id}) => {
   const [selectedCourse, setSelectedCourse] = useState(null)
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 py-12">
+    <div id={id} className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -93,7 +94,7 @@ const BeginnerCourses = () => {
                 <p className="text-gray-600 text-sm mb-4">{course.description}</p>
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-500">{course.lessons} lessons</span>
-                  <button className="text-green-600 font-semibold hover:text-green-700">
+                  <button  onClick={() => addCourseToStorage(course)} className="text-green-600 font-semibold hover:text-green-700">
                     Start Learning →
                   </button>
                 </div>

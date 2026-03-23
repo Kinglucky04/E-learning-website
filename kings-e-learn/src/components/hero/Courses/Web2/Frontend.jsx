@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {addCourseToStorage} from "../../../utils/CourseStorage"
 
 const frontendCourses = [
   {
@@ -71,9 +72,13 @@ const frontendCourses = [
   }
 ]
 
-const FrontendCourses = () => {
+const FrontendCourses = ({ searchQuery = '' }) => {
   const [selectedFramework, setSelectedFramework] = useState(null)
   const frameworks = ['All', ...new Set(frontendCourses.map(c => c.framework))]
+  const filteredCourses = frontendCourses.filter(course => 
+    course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    course.framework.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 py-12">
@@ -94,7 +99,8 @@ const FrontendCourses = () => {
 
         {/* Course Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {frontendCourses.map(course => (
+          {filteredCourses.length > 0 ? (
+            filteredCourses.map(course => (
             <div key={course.id} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300">
               <div className={`h-2 bg-gradient-to-r ${course.color}`}></div>
               <div className="p-6">
@@ -120,8 +126,8 @@ const FrontendCourses = () => {
                 </div>
                 
                 <div className="flex gap-3">
-                  <button className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-all">
-                    Enroll Now
+                  <button onClick={() => addCourseToStorage(course)} className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-all">
+                    Start Learning
                   </button>
                   <button className="px-4 py-2 border-2 border-purple-300 text-purple-600 rounded-lg hover:bg-purple-50 transition-all">
                     Preview
@@ -129,7 +135,11 @@ const FrontendCourses = () => {
                 </div>
               </div>
             </div>
-          ))}
+          ))): (
+            <div className="col-span-full text-center py-10">
+              <p className="text-gray-400 text-lg">No frontend courses found matching "{searchQuery}"</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

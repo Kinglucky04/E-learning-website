@@ -75,9 +75,13 @@ const web3Courses = [
   }
 ]
 
-const Web3Courses = () => {
+const Web3Courses = ({ searchQuery = '', id }) => {
+  const filteredCourses = web3Courses.filter(course => 
+    course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    course.category.toLowerCase().includes(searchQuery.toLowerCase())
+  );
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-purple-900 py-12">
+    <div id={id} className="min-h-screen bg-gradient-to-br from-gray-900 to-purple-900 py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -119,7 +123,8 @@ const Web3Courses = () => {
 
         {/* Course Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {web3Courses.map(course => (
+          {filteredCourses.length > 0 ? (
+            filteredCourses.map(course => (
             <div key={course.id} className="group relative bg-gray-800 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:transform hover:-translate-y-2">
               <div className={`h-2 bg-gradient-to-r ${course.color}`}></div>
               
@@ -153,17 +158,21 @@ const Web3Courses = () => {
                   <span>📚 {course.lessons} lessons</span>
                 </div>
                 
-                <button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-all transform group-hover:scale-105">
-                  Start Journey →
+                <button onClick={() => addCourseToStorage(course)} className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-all transform group-hover:scale-105">
+                  Start Learning
                 </button>
               </div>
             </div>
-          ))}
+          ))) : (
+            <div className="col-span-full text-center py-10">
+              <p className="text-gray-400 text-lg">No Web3 courses found matching "{searchQuery}"</p>
+            </div>
+          )}
         </div>
 
         {/* Web3 Badge */}
-        <div className="fixed bottom-4 right-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg animate-bounce">
-          🚀 Web3 is the Future
+        <div className="fixed bottom-4 right-4 bg-blue-400 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg animate-bounce">
+           Web3 is the Future
         </div>
       </div>
     </div>

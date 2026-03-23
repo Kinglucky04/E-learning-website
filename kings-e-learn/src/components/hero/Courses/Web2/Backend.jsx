@@ -51,7 +51,11 @@ const backendCourses = [
   }
 ]
 
-const BackendCourses = () => {
+const BackendCourses = ({ searchQuery = '' }) => {
+  const filteredCourses = backendCourses.filter(course => 
+    course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    course.technology.toLowerCase().includes(searchQuery.toLowerCase())
+  );
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -71,7 +75,8 @@ const BackendCourses = () => {
 
         {/* Course Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {backendCourses.map(course => (
+          {filteredCourses.length > 0 ? (
+            filteredCourses.map(course =>
             <div key={course.id} className="bg-gray-800 rounded-2xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300">
               <div className={`h-1 bg-gradient-to-r ${course.color}`}></div>
               <div className="p-6">
@@ -103,12 +108,16 @@ const BackendCourses = () => {
                   </span>
                 </div>
                 
-                <button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
+                <button onClick={() => addCourseToStorage(course)} className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all">
                   Start Learning →
                 </button>
               </div>
             </div>
-          ))}
+          )): (
+            <div className="col-span-full text-center py-10">
+              <p className="text-gray-400 text-lg">No backend courses found matching "{searchQuery}"</p>
+            </div>
+          )}
         </div>
         
         {/* Additional Resources */}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export const WebRoadmap = () => {
+export const WebRoadmap = ({ searchQuery = '' }) => {
   const [activeTab, setActiveTab] = useState('web2')
 
   const web2Roadmap = [
@@ -81,7 +81,16 @@ export const WebRoadmap = () => {
     }
   ]
 
-  const currentRoadmap = activeTab === 'web2' ? web2Roadmap : web3Roadmap
+  const currentRoadmap = activeTab === 'web2' ? web2Roadmap : web3Roadmap;
+
+  const filteredRoadmap = currentRoadmap.map(phase => {
+    return {
+      ...phase,
+      courses: phase.courses.filter(course => 
+        course.name.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    }
+  }).filter(phase => phase.courses.length > 0);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 py-12">
@@ -129,7 +138,8 @@ export const WebRoadmap = () => {
           {/* Vertical Line */}
           <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-blue-500 "></div>
           
-          {currentRoadmap.map((phase, index) => (
+          {filteredRoadmap.length > 0 ? (
+            filteredRoadmap.map((phase, index) => (
             <div key={index} className={`relative flex flex-col md:flex-row items-center mb-16 ${
               index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
             }`}>
@@ -168,7 +178,11 @@ export const WebRoadmap = () => {
                 </div>
               </div>
             </div>
-          ))}
+          ))): (
+            <div className="text-center py-10 w-full">
+              <p className="text-gray-400 text-lg">No roadmap phases found matching "{searchQuery}"</p>
+            </div>
+          )}
         </div>
       </div>
     </div>
