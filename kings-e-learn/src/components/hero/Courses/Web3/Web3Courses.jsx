@@ -1,8 +1,9 @@
 import React from 'react'
+import {addCourseToStorage} from "../../../utils/CourseStorage"
 
 const web3Courses = [
   {
-    id: 1,
+    id: 104,
     title: "Blockchain Fundamentals",
     category: "Basics",
     description: "Understand blockchain technology and its applications",
@@ -14,7 +15,7 @@ const web3Courses = [
     topics: ["Cryptography", "Consensus Mechanisms", "Wallets", "Transactions"]
   },
   {
-    id: 2,
+    id: 204,
     title: "Smart Contract Development",
     category: "Development",
     description: "Write and deploy smart contracts on Ethereum",
@@ -26,7 +27,7 @@ const web3Courses = [
     topics: ["Solidity", "Hardhat", "Truffle", "Testing"]
   },
   {
-    id: 3,
+    id: 304,
     title: "dApp Development",
     category: "Development",
     description: "Build decentralized applications",
@@ -38,7 +39,7 @@ const web3Courses = [
     topics: ["Web3.js", "React Integration", "MetaMask", "IPFS"]
   },
   {
-    id: 4,
+    id: 404,
     title: "DeFi & Yield Farming",
     category: "Finance",
     description: "Decentralized Finance protocols and strategies",
@@ -50,7 +51,7 @@ const web3Courses = [
     topics: ["Lending", "Staking", "AMMs", "Yield Optimization"]
   },
   {
-    id: 5,
+    id: 504,
     title: "NFT Development",
     category: "NFTs",
     description: "Create and manage NFT collections",
@@ -62,7 +63,7 @@ const web3Courses = [
     topics: ["ERC-721", "ERC-1155", "Marketplaces", "Minting"]
   },
   {
-    id: 6,
+    id: 604,
     title: "Web3 Security",
     category: "Security",
     description: "Secure your smart contracts and dApps",

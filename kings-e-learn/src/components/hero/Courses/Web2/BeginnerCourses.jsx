@@ -3,7 +3,7 @@ import {addCourseToStorage} from "../../../utils/CourseStorage"
 
 const beginnerCourses = [
   {
-    id: 1,
+    id: 102,
     title: "HTML5 Mastery",
     description: "Learn the structure of the web with HTML5",
     duration: "4 hours",
@@ -19,7 +19,7 @@ const beginnerCourses = [
     ]
   },
   {
-    id: 2,
+    id: 202,
     title: "CSS3 Styling",
     description: "Make beautiful websites with CSS3",
     duration: "6 hours",
@@ -35,7 +35,7 @@ const beginnerCourses = [
     ]
   },
   {
-    id: 3,
+    id: 302,
     title: "JavaScript Fundamentals",
     description: "Learn the language of the web",
     duration: "8 hours",

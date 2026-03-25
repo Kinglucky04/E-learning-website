@@ -1,8 +1,9 @@
 import React from 'react'
+import {addCourseToStorage} from "../../../utils/CourseStorage"
 
 const backendCourses = [
   {
-    id: 1,
+    id: 101,
     title: "Node.js & Express",
     technology: "Node.js",
     description: "Build scalable backend services with Node.js",
@@ -14,7 +15,7 @@ const backendCourses = [
     topics: ["REST APIs", "Middleware", "Authentication", "Database Integration"]
   },
   {
-    id: 2,
+    id: 201,
     title: "Python Django",
     technology: "Django",
     description: "High-level Python web framework",
@@ -26,7 +27,7 @@ const backendCourses = [
     topics: ["ORM", "Admin Panel", "Authentication", "REST Framework"]
   },
   {
-    id: 3,
+    id: 301,
     title: "Database Mastery",
     technology: "SQL & NoSQL",
     description: "Master database design and management",
@@ -38,7 +39,7 @@ const backendCourses = [
     topics: ["PostgreSQL", "MongoDB", "Indexing", "Query Optimization"]
   },
   {
-    id: 4,
+    id: 401,
     title: "API Development",
     technology: "GraphQL & REST",
     description: "Design and build robust APIs",

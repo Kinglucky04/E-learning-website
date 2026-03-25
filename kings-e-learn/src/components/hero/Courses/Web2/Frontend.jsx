@@ -3,7 +3,7 @@ import {addCourseToStorage} from "../../../utils/CourseStorage"
 
 const frontendCourses = [
   {
-    id: 1,
+    id: 103,
     title: "React.js Complete Guide",
     framework: "React",
     description: "Build modern web applications with React",
@@ -20,7 +20,7 @@ const frontendCourses = [
     ]
   },
   {
-    id: 2,
+    id: 203,
     title: "Vue.js Mastery",
     framework: "Vue",
     description: "Progressive JavaScript framework",
@@ -37,7 +37,7 @@ const frontendCourses = [
     ]
   },
   {
-    id: 3,
+    id: 304,
     title: "Angular Framework",
     framework: "Angular",
     description: "Enterprise-grade applications",
@@ -54,7 +54,7 @@ const frontendCourses = [
     ]
   },
   {
-    id: 4,
+    id: 404,
     title: "Next.js Framework",
     framework: "Next.js",
     description: "React framework for production",
