@@ -85,12 +85,13 @@ function Header({ searchQuery, setSearchQuery }) {
                 className="w-8 h-8 rounded-full border-2 border-white/20"
               />
               <span className="text-white text-sm font-medium">{user?.name || "Student"}</span>
+               <Profile isOpen={isProfileOpen} onClose={closeProfile} />
             </div>
           </div>
         </div>
       </div>
       <MobileMenu isOpen={isMenuOpen} onClose={closeMenu} />
-      <Profile isOpen={isProfileOpen} onClose={closeProfile} />
+     
     </div>
   )
 }

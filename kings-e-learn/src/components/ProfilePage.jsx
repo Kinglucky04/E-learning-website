@@ -1,150 +1,173 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from 'react';
+import { useAuth } from './hooks/useAuth';
 
-const Profile = () => {
-  const [courses, setCourses] = useState([]);
+const ProfilePage = () => {
+  const { user } = useAuth();
 
-  // Load from localStorage
-  useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem("courses")) || [];
-    setCourses(saved);
-  }, []);
+  // Sample courses data
+  const [registeredCourses] = useState([
+    { id: 1, title: "HTML & Semantic Web", progress: 65, icon: "📘" },
+    { id: 2, title: "CSS Flexbox & Grid Mastery", progress: 42, icon: "🎨" },
+    { id: 3, title: "JavaScript: Core Concepts", progress: 88, icon: "💛" },
+    { id: 4, title: "UI/UX Principles", progress: 30, icon: "🎯" },
+    { id: 5, title: "Database Design (SQL)", progress: 55, icon: "🗄️" },
+    { id: 6, title: "Git & GitHub Workflow", progress: 22, icon: "🔀" }
+  ]);
 
-  // Save to localStorage
-  useEffect(() => {
-    localStorage.setItem("courses", JSON.stringify(courses));
-  }, [courses]);
+  const [completedCourses] = useState([
+    { id: 1, title: "React Fundamentals", progress: 100, icon: "⚛️", completedDate: "Jan 15, 2026" },
+    { id: 2, title: "Node.js Basics", progress: 100, icon: "🟢", completedDate: "Feb 3, 2026" },
+    { id: 3, title: "Python for Beginners", progress: 100, icon: "🐍", completedDate: "Dec 20, 2025" },
+    { id: 4, title: "TypeScript Essentials", progress: 100, icon: "📘", completedDate: "Mar 10, 2026" }
+  ]);
 
-  // Mock: Add a course (you'll later connect this to your course pages)
-  const addCourse = () => {
-    const newCourse = {
-      id: Date.now(),
-      title: "New Course",
-      progress: 0,
-      completed: false,
-    };
-    setCourses([...courses, newCourse]);
+  // Get initials for avatar
+  const getInitials = () => {
+    if (!user?.username) return "US"; // fallback
+    return user.username.substring(0, 2).toUpperCase();
   };
-
-  // Update progress
-  const updateProgress = (id, value) => {
-    const updated = courses.map((course) =>
-      course.id === id
-        ? {
-            ...course,
-            progress: value,
-            completed: value === 100,
-          }
-        : course
-    );
-    setCourses(updated);
-  };
-
-  // Stats
-  const completedCourses = courses.filter(c => c.completed).length;
-  const inProgressCourses = courses.filter(c => !c.completed).length;
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <div className="max-w-6xl mx-auto">
-
-        {/* Header */}
-        <h1 className="text-3xl font-bold mb-6">My Learning Profile</h1>
-
-        {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white p-6 rounded-xl shadow">
-            <h2 className="text-lg font-semibold">Courses Registered</h2>
-            <p className="text-2xl font-bold">{courses.length}</p>
+    <div className="min-h-screen bg-gray-50 font-sans">
+      <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        {/* Header Section */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-6 mb-6 border-b-2 border-gray-200">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-2">
+              <span className="text-3xl">👤</span>
+              My Profile
+            </h1>
+            <p className="text-sm text-gray-600 mt-1">
+              Track your learning journey — registered & completed courses
+            </p>
           </div>
 
-          <div className="bg-white p-6 rounded-xl shadow">
-            <h2 className="text-lg font-semibold">In Progress</h2>
-            <p className="text-2xl font-bold">{inProgressCourses}</p>
-          </div>
-
-          <div className="bg-white p-6 rounded-xl shadow">
-            <h2 className="text-lg font-semibold">Completed</h2>
-            <p className="text-2xl font-bold">{completedCourses}</p>
+          {/* User Info Card */}
+          <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-200 flex items-center gap-3">
+            <div className="w-15 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+              <span className="text-blue-700 font-semibold text-lg">
+                {getInitials()}
+              </span>
+            </div>
+            <div>
+              <div className="font-semibold text-gray-900">{user?.name || user?.username || "Student"}</div>
+            </div>
           </div>
         </div>
 
-        {/* Add Course Button (for testing) */}
-        <button
-          onClick={addCourse}
-          className="mb-6 px-4 py-2 bg-blue-600 text-white rounded-lg"
-        >
-          + Add Course
-        </button>
-
-        {/* Course List */}
-        <div className="grid gap-6">
-          {courses.length === 0 ? (
-            <p className="text-gray-500">No courses yet.</p>
-          ) : (
-            courses.map((course) => (
-              <div
-                key={course.id}
-                className="bg-white p-6 rounded-xl shadow"
-              >
-                <div className="flex justify-between items-center mb-4">
-                  <h2 className="text-xl font-bold">{course.title}</h2>
-                  <span
-                    className={`px-3 py-1 rounded-full text-sm ${
-                      course.completed
-                        ? "bg-green-500 text-white"
-                        : "bg-yellow-400 text-black"
-                    }`}
-                  >
-                    {course.completed ? "Completed" : "In Progress"}
-                  </span>
+        {/* Two Column Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          
+          {/* Courses Registered Section */}
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+            <div className="px-6 py-4 border-b border-gray-200 flex items-center gap-2">
+              <span className="text-2xl">📚</span>
+              <h2 className="text-xl font-semibold text-gray-900">Courses Registered</h2>
+            </div>
+            
+            <div className="divide-y divide-gray-100">
+              {registeredCourses.length === 0 ? (
+                <div className="py-12 text-center text-gray-500">
+                  <span className="text-4xl block mb-2">📭</span>
+                  <p>No registered courses yet</p>
+                  <p className="text-sm">Explore and enroll in new courses!</p>
                 </div>
+              ) : (
+                registeredCourses.map((course) => (
+                  <div key={course.id} className="p-5 hover:bg-gray-50 transition-colors">
+                    <div className="flex items-start justify-between mb-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xl">{course.icon}</span>
+                        <h3 className="font-medium text-gray-900">{course.title}</h3>
+                      </div>
+                      <span className="text-xs font-medium bg-gray-100 text-gray-700 px-2 py-1 rounded-full">
+                        {course.progress}% complete
+                      </span>
+                    </div>
+                    
+                    {/* Progress Bar */}
+                    <div className="mt-2">
+                      <div className="flex items-center gap-3">
+                        <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                          <div 
+                            className="h-full bg-blue-600 rounded-full transition-all duration-300"
+                            style={{ width: `${course.progress}%` }}
+                          />
+                        </div>
+                        <span className="text-xs font-medium text-gray-600 min-w-[45px]">
+                          {course.progress}%
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
 
-                {/* Progress Bar */}
-                <div className="w-full bg-gray-200 rounded-full h-3 mb-3">
-                  <div
-                    className="bg-blue-600 h-3 rounded-full transition-all"
-                    style={{ width: `${course.progress}%` }}
-                  ></div>
+          {/* Courses Completed Section */}
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+            <div className="px-6 py-4 border-b border-gray-200 flex items-center gap-2">
+              <span className="text-2xl">🏆</span>
+              <h2 className="text-xl font-semibold text-gray-900">Courses Completed</h2>
+            </div>
+            
+            <div className="divide-y divide-gray-100">
+              {completedCourses.length === 0 ? (
+                <div className="py-12 text-center text-gray-500">
+                  <span className="text-4xl block mb-2">🎯</span>
+                  <p>No completed courses yet</p>
+                  <p className="text-sm">Keep up the great work!</p>
                 </div>
+              ) : (
+                completedCourses.map((course) => (
+                  <div key={course.id} className="p-5 hover:bg-gray-50 transition-colors">
+                    <div className="flex items-start justify-between mb-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xl">{course.icon}</span>
+                        <h3 className="font-medium text-gray-900">{course.title}</h3>
+                      </div>
+                      <span className="text-xs font-medium bg-green-100 text-green-700 px-2 py-1 rounded-full">
+                        ✓ Completed
+                      </span>
+                    </div>
+                    
+                    {/* Completion Info */}
+                    <div className="mt-2 flex items-center justify-between text-sm">
+                      <div className="flex items-center gap-2 text-gray-600">
+                        <span>✅</span>
+                        <span>Completed on {course.completedDate}</span>
+                      </div>
+                      <span className="text-green-600 font-medium">100%</span>
+                    </div>
+                    
+                    {/* Progress Bar (Full) */}
+                    <div className="mt-3">
+                      <div className="flex items-center gap-3">
+                        <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                          <div className="h-full bg-green-600 rounded-full w-full" />
+                        </div>
+                        <span className="text-xs font-medium text-green-600 min-w-[45px]">
+                          100%
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+        </div>
 
-                <p className="text-sm text-gray-600 mb-4">
-                  Progress: {course.progress}%
-                </p>
-
-                {/* Controls */}
-                <div className="flex gap-2">
-                  <button
-                    onClick={() =>
-                      updateProgress(course.id, Math.min(course.progress + 10, 100))
-                    }
-                    className="px-3 py-1 bg-green-500 text-white rounded"
-                  >
-                    +10%
-                  </button>
-
-                  <button
-                    onClick={() =>
-                      updateProgress(course.id, Math.max(course.progress - 10, 0))
-                    }
-                    className="px-3 py-1 bg-red-500 text-white rounded"
-                  >
-                    -10%
-                  </button>
-
-                  <button
-                    onClick={() => updateProgress(course.id, 100)}
-                    className="px-3 py-1 bg-blue-600 text-white rounded"
-                  >
-                    Complete
-                  </button>
-                </div>
-              </div>
-            ))
-          )}
+        {/* Footer */}
+        <div className="mt-10 pt-6 border-t border-gray-200 text-center">
+          <p className="text-xs text-gray-500 flex items-center justify-center gap-1">
+            <span>🎓</span> Learning progress tracker — keep growing every day
+          </p>
         </div>
       </div>
     </div>
   );
 };
 
-export default Profile;
+export default ProfilePage;

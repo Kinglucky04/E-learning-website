@@ -10,6 +10,7 @@ import FrontendCourses from './components/hero/Courses/Web2/Frontend';
 import BackendCourses from './components/hero/Courses/Web2/Backend';  
 import WebRoadmap from './components/hero/Courses/Roadmap';
 import Web3Courses from './components/hero/Courses/Web3/Web3Courses';
+import ProfilePage from './components/ProfilePage';
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
@@ -81,11 +82,15 @@ function App() {
 
           {/* Fallback for unknown routes */}
           <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
+        
       </BrowserRouter>
     </AuthProvider>
   );
 }
+
+
 
 export default App
 
