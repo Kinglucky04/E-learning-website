@@ -82,13 +82,13 @@ const Web3Courses = ({ searchQuery = '', id }) => {
     course.category.toLowerCase().includes(searchQuery.toLowerCase())
   );
   return (
-    <div id={id} className="min-h-screen bg-gradient-to-br from-gray-900 to-purple-900 py-12">
+    <div id={id} className="min-h-screen bg-gray-900  py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-block px-4 py-2 bg-purple-600 text-white rounded-full text-sm font-semibold mb-4 animate-pulse">
-            ⛓️ The Future of Internet
+          <div className="inline-block px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-semibold mb-4 animate-pulse">
+             The Future of Internet
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Web3 & Blockchain Courses
@@ -159,7 +159,7 @@ const Web3Courses = ({ searchQuery = '', id }) => {
                   <span>📚 {course.lessons} lessons</span>
                 </div>
                 
-                <button onClick={() => addCourseToStorage(course)} className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-all transform group-hover:scale-105">
+                <button onClick={() => addCourseToStorage(course)} className="w-full bg-blue-500 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-all transform group-hover:scale-105">
                   Start Learning
                 </button>
               </div>

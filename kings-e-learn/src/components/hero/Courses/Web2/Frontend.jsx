@@ -102,7 +102,7 @@ const FrontendCourses = ({ searchQuery = '' }) => {
           {filteredCourses.length > 0 ? (
             filteredCourses.map(course => (
             <div key={course.id} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300">
-              <div className={`h-2 bg-gradient-to-r ${course.color}`}></div>
+              <div className={`h-2 bg-linear-to-r ${course.color}`}></div>
               <div className="p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
@@ -126,11 +126,8 @@ const FrontendCourses = ({ searchQuery = '' }) => {
                 </div>
                 
                 <div className="flex gap-3">
-                  <button onClick={() => addCourseToStorage(course)} className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-all">
+                  <button onClick={() => addCourseToStorage(course)} className="flex-1 bg-purple-400 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-all cursor-pointer">
                     Start Learning
-                  </button>
-                  <button className="px-4 py-2 border-2 border-purple-300 text-purple-600 rounded-lg hover:bg-purple-50 transition-all">
-                    Preview
                   </button>
                 </div>
               </div>

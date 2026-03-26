@@ -56,7 +56,7 @@ const BeginnerCourses = ({id}) => {
   const [selectedCourse, setSelectedCourse] = useState(null)
 
   return (
-    <div id={id} className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 py-12">
+    <div id={id} className="min-h-screen bg-linear-to-br from-green-50 to-blue-50 py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -117,7 +117,7 @@ const BeginnerCourses = ({id}) => {
                       <p className="text-sm text-gray-500">Duration: {video.duration}</p>
                     </div>
                   </div>
-                  <button className="px-4 py-2 bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-lg hover:shadow-lg transition-all">
+                  <button className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:shadow-lg transition-all">
                     Watch Now
                   </button>
                 </div>
