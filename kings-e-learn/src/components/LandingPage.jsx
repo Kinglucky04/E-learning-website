@@ -19,7 +19,7 @@ function LandingPage() {
           
           <div className="flex flex-col sm:flex-row justify-between items-center gap-6 pb-8 border-b border-white/20 mb-12">
             <h1 className="text-3xl sm:text-4xl font-bold bg-linear-to-r from-purple-300 to-blue-300 bg-clip-text text-transparent uppercase tracking-wider">
-              Kings E-Learn
+              Apex Tech Academy
             </h1>
             
             <div className="flex gap-4">
@@ -41,7 +41,7 @@ function LandingPage() {
           {/* Hero Section */}
           <div className="flex flex-col items-center justify-center text-center mt-20 sm:mt-32">
             <h2 className="text-4xl sm:text-6xl font-bold bg-gradient-to-r from-purple-300 via-blue-300 to-purple-300 bg-clip-text text-transparent mb-6 animate-fade-in">
-              Welcome to Kings E-Learn
+              Welcome to Apex Tech Academy
             </h2>
             <p className="text-lg sm:text-xl text-white/90 max-w-2xl mb-8">
               Best online learning platform for aspiring tech professionals!

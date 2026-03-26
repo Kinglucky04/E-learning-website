@@ -52,7 +52,7 @@ function Header({ searchQuery, setSearchQuery }) {
           <div className='flex items-center justify-between sm:justify-start'>
             <div className='relative group'>
               <h2 className='text-sm uppercase sm:text-2xl font-bold tracking-wider bg-blue-400 bg-clip-text text-transparent'>
-                Kings E-Learn
+                Apex Tech Academy
               </h2>
               <p className='absolute left-0 top-full text-xs text-gray-400 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 whitespace-nowrap sm:hidden md:block'>
                 Learn like a King, rule your world
