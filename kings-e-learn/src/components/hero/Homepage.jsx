@@ -24,7 +24,7 @@ function Homepage() {
                 </div>
 
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-blue-600 bg-clip-text text-transparent">
-                  Welcome to Kings E-Learn.
+                  Welcome to Apex Tech Academy.
                 </h1>
 
                 <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
